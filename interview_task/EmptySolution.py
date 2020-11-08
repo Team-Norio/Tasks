@@ -1,4 +1,4 @@
-
+import pandas as pd
 
 def process_shifts(path_to_csv):
     """
@@ -16,6 +16,9 @@ def process_shifts(path_to_csv):
     50 pounds
     :rtype dict:
     """
+    shift = pd.read_csv(path_to_csv)
+    print(shift)
+    
     return
 
 
@@ -38,6 +41,9 @@ def process_sales(path_to_csv):
 
     :rtype dict:
     """
+    sales = pd.read_csv(path_to_csv)
+    print(sales)
+    
     return
 
 def compute_percentage(shifts, sales):
@@ -77,6 +83,11 @@ def main(path_to_shifts, path_to_sales):
     """
     Do not touch this function, but you can look at it, to have an idea of
     how your data should interact with each other
+    
+    Finally results:
+    Hour	Sales	Labour	%
+    7:00	100	    30	    30%
+    8:00	300	    60	    20%
     """
 
     shifts_processed = process_shifts(path_to_shifts)
@@ -87,6 +98,7 @@ def main(path_to_shifts, path_to_sales):
 
 if __name__ == '__main__':
     # You can change this to test your code as you wish
-    path_to_sales = ""
-    path_to_shifts = ""
+    path_to_sales = "transactions.csv"
+    path_to_shifts = "work_shifts.csv"
     best_hour, worst_hour = main(path_to_shifts, path_to_sales)
+    print("best_hour", best_hour, "worst_hour", worst_hour)
